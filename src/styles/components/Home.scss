@@ -1,0 +1,100 @@
+.todo-app {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 8px 24px rgba(167, 77, 77, 0.08);
+    border-radius: 16px;
+    min-height: 600px;
+    
+    @media (max-width: 850px) {
+        margin: 20px;
+        min-height: calc(100vh - 40px);
+    }
+    
+    @media (max-width: 480px) {
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+
+  
+    background-image: 
+        radial-gradient(circle at 100% 100%, rgba(25, 118, 210, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 0% 0%, rgba(25, 118, 210, 0.03) 0%, transparent 50%);
+    
+    // Smooth scroll behavior for the todo list
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #1976d2 #f5f5f5;
+    
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #f5f5f5;
+        border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #1976d2;
+        border-radius: 4px;
+        
+        &:hover {
+            background-color: #1565c0;
+        }
+    }
+    
+    // Container animation on load
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+// Fade in animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Light theme styles
+@media (prefers-color-scheme: light) {
+    .todo-app {
+        background-color: #ffffff;
+        color: #333333;
+    }
+}
+
+// Dark theme styles
+@media (prefers-color-scheme: dark) {
+    .todo-app {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        
+        background-image: 
+            radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    }
+}
+
+// Container blur effect when modal is open
+.modal-open .todo-app {
+    filter: blur(4px);
+    transition: filter 0.3s ease;
+}
+
+// Print styles
+@media print {
+    .todo-app {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+        min-height: auto;
+    }
+}
